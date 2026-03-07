@@ -67,7 +67,7 @@ export default async function CakeDetail({ params }: CakeDetailProps) {
                 >
                   <div className={styles.img}>
                     <ImageWithLoading
-                      src={`./categories/${cake.image}/${cake.image}-${imageIndex}.png`}
+                      src={`/categories/${cake.image}/${cake.image}-${imageIndex}.png`}
                       alt={`${cake.name} ${imageIndex + 1}`}
                     />
                   </div>

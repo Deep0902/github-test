@@ -13,7 +13,7 @@ const WhatsAppOverlay = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <ImageWithLoading alt="WhatsApp" src="./icons/whatsapp.svg" />
+          <ImageWithLoading alt="WhatsApp" src="/icons/whatsapp.svg" />
         </a>
       </div>
     </div>

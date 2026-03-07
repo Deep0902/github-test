@@ -21,7 +21,7 @@ export default function ImageWithLoading({ src, alt }: ImageWithLoadingProps) {
       )}
       <Image
         className={styles.img}
-        src={src}
+        src={`.${src}`}
         alt={alt}
         fill={true}
         loading="lazy"

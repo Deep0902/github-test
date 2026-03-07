@@ -31,7 +31,7 @@ export default function MainContent({}: MainContentProps) {
             >
               <div className={styles.cakeImageContainer}>
                 <ImageWithLoading
-                  src={`./banners/${cake.image}.png`}
+                  src={`/banners/${cake.image}.png`}
                   alt={`${cake.name} Photo`}
                 />
               </div>
