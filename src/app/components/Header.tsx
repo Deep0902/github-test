@@ -11,7 +11,7 @@ export default function Header({}: HeaderProps) {
     <div className={styles.container}>
       <Link href="/" className={styles.headBanner} aria-label="Home">
         <Image
-          src="/bakery-header.png"
+          src="./bakery-header.png"
           alt="Bakery header"
            loading="eager"
           className={styles.banner}
