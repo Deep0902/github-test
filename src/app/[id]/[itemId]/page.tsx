@@ -61,7 +61,7 @@ export default async function ItemDetail({ params }: ItemDetailProps) {
         <div className={styles.itemDetail}>
           <div className={styles.img}>
             <ImageWithLoading
-              src={`/categories/${category.image}/${category.image}-${itemIndex}.png`}
+              src={`./categories/${category.image}/${category.image}-${itemIndex}.png`}
               alt={`${category.name} ${itemIndex + 1}`}
             />
           </div>
