@@ -7,6 +7,12 @@ import { getCategoryImages } from "../utils/imageUtils";
 import ScrollFadeObserver from "./ScrollFadeObserver";
 import styles from "./page.module.css";
 
+export async function generateStaticParams() {
+  return cakesCategories.map((cake) => ({
+    id: cake.id.toString(),
+  }));
+}
+
 export async function generateMetadata({ params }: any) {
   const { id } = await params;
   const cake = cakesCategories.find((c) => c.id === parseInt(id));

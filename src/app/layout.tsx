@@ -14,12 +14,6 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Naresh Bakers Menu",
   description: "Naresh Bakers Menu",
-  manifest: "/manifest.ts",
-  themeColor: "#ec2127",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "black-translucent",
-  },
 };
 
 export default function RootLayout({

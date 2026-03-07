@@ -3,7 +3,6 @@ import ScrollFadeObserver from "../[id]/ScrollFadeObserver";
 import { cakesCategories } from "../data";
 import ImageWithLoading from "./ImageWithLoading";
 import styles from "./MainContent.module.css";
-import InstallPrompt from "./InstallPrompt";
 
 interface MainContentProps {
   // Add any props if needed in the future
@@ -42,8 +41,6 @@ export default function MainContent({}: MainContentProps) {
             </Link>
           ))}
         </div>
-      <InstallPrompt/>
-
       </main>
     </>
   );

@@ -3,7 +3,6 @@ import Lenis from "lenis";
 import { useEffect } from "react";
 import MainContent from "./components/MainContent";
 import styles from "./page.module.css";
-import InstallPrompt from "./components/InstallPrompt";
 
 export default function Home() {
   useEffect(() => {

@@ -2,9 +2,29 @@ import { notFound } from "next/navigation";
 import ImageWithLoading from "../../components/ImageWithLoading";
 import ScrollToTop from "../../components/ScrollToTop";
 import { cakesCategories } from "../../data";
-import { categoryImageExists } from "../../utils/imageUtils";
+import { categoryImageExists, getCategoryImages } from "../../utils/imageUtils";
 import styles from "./page.module.css";
 import { Metadata } from "next";
+
+export async function generateStaticParams() {
+  const params = [];
+  
+  for (const cake of cakesCategories) {
+    const images = await getCategoryImages(cake.image);
+    const imageIndices = images.map((filename) => {
+      const match = filename.match(/-(\d+)\./);      return match ? parseInt(match[1]) : 0;
+    });
+    
+    for (const itemId of imageIndices) {
+      params.push({
+        id: cake.id.toString(),
+        itemId: itemId.toString(),
+      });
+    }
+  }
+  
+  return params;
+}
 
 interface ItemDetailProps {
   params: Promise<{
