@@ -1,6 +1,8 @@
 import ImageWithLoading from "./ImageWithLoading";
+import { StaticImageData } from "next/image";
+
 type MenuItemData = {
-  img: string;
+  img: string | StaticImageData;
   name: string;
   desc: string;
   isSpicy: boolean;

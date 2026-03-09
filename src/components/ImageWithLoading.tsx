@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { useState } from "react";
 
+import { StaticImageData } from "next/image";
+
 interface ImageWithLoadingProps {
-  src: string;
+  // allow either imported images or public‑folder paths
+  src: string | StaticImageData;
   alt: string;
   className?: string;
 }
