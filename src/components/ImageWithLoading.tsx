@@ -7,7 +7,7 @@ import { StaticImageData } from "next/image";
 
 interface ImageWithLoadingProps {
   // allow either imported images or public‑folder paths
-  src: string | StaticImageData;
+  src: any;
   alt: string;
   className?: string;
 }
@@ -31,7 +31,7 @@ export default function ImageWithLoading({
       )}
       <Image
         className={`transition-transform ease-in-out duration-300 object-contain ${className}`}
-        src={src}
+        src={`.${src}`}
         alt={alt}
         fill={true}
         loading="lazy"
