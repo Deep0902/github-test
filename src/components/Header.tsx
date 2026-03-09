@@ -10,7 +10,7 @@ export default function Header() {
         aria-label="Home"
       >
         <Image
-          src="/pizza1.png"
+          src="./pizza1.png"
           alt="Bakery header"
           loading="eager"
           className="w-full h-auto object-contain"
