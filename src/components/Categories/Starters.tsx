@@ -26,6 +26,30 @@ const starterItems = [
     isSpicy: true,
     price: 129,
   },
+  {
+    name: "French Fries",
+    desc: "Crispy golden fries, the classic irresistible side",
+    img: "/categories/starters/starter4.png",
+    isVeg: false,
+    isSpicy: false,
+    price: 79,
+  },
+  {
+    name: "Peri Peri Fries",
+    desc: "Spicy peri peri seasoned fries with a fiery kick.",
+    img: "/categories/starters/starter5.png",
+    isVeg: false,
+    isSpicy: true,
+    price: 79,
+  },
+  {
+    name: "Potato Vedeges",
+    desc: "Thick-cut, crispy-on-the-outside, tender-on-the-inside wedges",
+    img: "/categories/starters/starter6.png",
+    isVeg: false,
+    isSpicy: false,
+    price: 79,
+  },
 ];
 
 

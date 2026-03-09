@@ -7,6 +7,7 @@ import Desserts from "./Categories/Desserts";
 import Pizza from "./Categories/Pizza";
 import ScrollFadeObserver from "./ScrollFadeObserver";
 import Starters from "./Categories/Starters";
+import Beverages from "./Categories/Beverages";
 
 const MainContent = () => {
   const [activeSection, setActiveSection] = useState("Pizzas");
@@ -64,13 +65,22 @@ const MainContent = () => {
             </span>
             <span
               className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              onClick={() => scrollToSection("Beverages")}
+            >
+              Beverages
+            </span>
+            <span
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Add-Ons")}
             >
               Add Ons
             </span>
           </div>
-          <div className="flex items-center justify-start gap-2 h-full shrink-0">
-            <Switch checked={toggle} onCheckedChange={toggleMode} />
+          <div className="flex items-center justify-start gap-2 h-full shrink-0 cursor-pointer" onClick={toggleMode}>
+            <Switch
+              checked={toggle}
+              className="cursor-pointer"
+            />
             <span className="text-sm sm:text-base md:text-xl font-semibold text-gray-600">
               Veg mode
             </span>
@@ -94,6 +104,12 @@ const MainContent = () => {
             id="Desserts"
           >
             <Desserts />
+          </section>
+          <section
+            className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
+            id="Beverages"
+          >
+            <Beverages />
           </section>
           <section
             className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
