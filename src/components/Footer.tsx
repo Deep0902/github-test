@@ -1,6 +1,5 @@
 import ImageWithLoading from "./ImageWithLoading";
 
-
 export default function Footer() {
   const phone = "9535283905";
   return (
@@ -8,7 +7,7 @@ export default function Footer() {
       <div className="flex flex-col-reverse items-center justify-center border-t border-[#2a2929] py-3 gap-2">
         <div className="text-center">
           <span className="text-xs md:text-sm text-center block">
-            Pizza pictures are like dreams - real may look different, but still
+            Pizza pictures are like dreams - Real may look different, but still
             delicious!
           </span>
         </div>
@@ -26,7 +25,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="bg-[#343434] text-white m-0 text-center py-2 w-full">
-        ©Bakers. All Right Reserved
+        ©Wow Pizza. All Right Reserved
       </p>
     </footer>
   );

@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useState } from "react";
 import ScrollFadeObserver from "./ScrollFadeObserver";
+import Pizza from "./Categories/Pizza";
+import { Switch } from "@/components/ui/switch"
 
 const MainContent = () => {
     const [activeSection, setActiveSection] = useState<string>("Pizzas");
@@ -20,8 +22,8 @@ const MainContent = () => {
         });
       },
       {
-        rootMargin: "-50% 0px -50% 0px",
-        threshold: 0
+        rootMargin: "-100px 0px -70% 0px",
+        threshold: 0.1
       }
     );
 
@@ -36,7 +38,7 @@ const MainContent = () => {
   return (
     <>
       <div className="px-[min(5vw,20px)]">
-        <nav className="flex items-center gap-8 sticky top-35 z-2 bg-white">
+        <nav className="flex items-center gap-8 sticky top-5 z-2 bg-white">
           <span 
             className={`cursor-pointer transition-colors ${activeSection === "Pizzas" ? "text-blue-600 font-semibold" : ""}`}
             onClick={() => scrollToSection("Pizzas")}
@@ -61,18 +63,21 @@ const MainContent = () => {
           >
             Add Ons
           </span>
+          <div>
+            <Switch />
+          </div>
         </nav>
         <main className="flex flex-col gap-4">
-          <section className="w-full h-60 border border-gray-300 p-4 scroll-mt-42" id="Pizzas">
-            Pizzas
+          <section className="w-full  border border-gray-300 p-4 scroll-mt-10" id="Pizzas">
+            <Pizza/>
           </section>
-          <section className="w-full h-60 border border-gray-300 p-4 scroll-mt-42" id="Starters">
+          <section className="w-full  border border-gray-300 p-4 scroll-mt-10" id="Starters">
             Starters
           </section>
-          <section className="w-full h-60 border border-gray-300 p-4 scroll-mt-42" id="Desserts">
+          <section className="w-full  border border-gray-300 p-4 scroll-mt-10" id="Desserts">
             Desserts
           </section>
-          <section className="w-full h-60 border border-gray-300 p-4 scroll-mt-42" id="Add-Ons">
+          <section className="w-full  border border-gray-300 p-4 scroll-mt-10" id="Add-Ons">
             Add-Ons
           </section>
         </main>

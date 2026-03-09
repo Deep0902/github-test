@@ -1,6 +1,6 @@
 "use client";
 import Lenis from "lenis";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const SmoothScroll = () => {
   useEffect(() => {
@@ -12,7 +12,7 @@ const SmoothScroll = () => {
     }
     requestAnimationFrame(raf);
   }, []);
-  return <div>SmoothScroll</div>;
+  return <></>;
 };
 
 export default SmoothScroll;
