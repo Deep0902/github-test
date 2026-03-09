@@ -42,36 +42,36 @@ const MainContent = () => {
   return (
     <>
       <div className="px-[min(5vw,20px)] my-2">
-        <nav className="flex items-center gap-8 sticky top-0 z-2 bg-white/30 backdrop-blur-lg">
-          <div className="flex-1 flex items-center gap-8 overflow-x-auto whitespace-nowrap py-2">
+        <nav className="flex items-center gap-2 sm:gap-4 md:gap-8 sticky top-0 z-2 bg-white/30 backdrop-blur-lg">
+          <div className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto whitespace-nowrap py-2 min-w-0">
             <span
-              className={`cursor-pointer text-xl transition-all pb-2 ${activeSection === "Pizzas" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Pizzas" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Pizzas")}
             >
               Pizzas
             </span>
             <span
-              className={`cursor-pointer text-xl transition-all pb-2 ${activeSection === "Starters" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Starters" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Starters")}
             >
               Starters
             </span>
             <span
-              className={`cursor-pointer text-xl transition-all pb-2 ${activeSection === "Desserts" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Desserts" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Desserts")}
             >
               Desserts
             </span>
             <span
-              className={`cursor-pointer text-xl transition-all pb-2 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Add-Ons")}
             >
               Add Ons
             </span>
           </div>
-          <div className="flex items-center justify-start gap-2 h-full">
+          <div className="flex items-center justify-start gap-2 h-full shrink-0">
             <Switch checked={toggle} onCheckedChange={toggleMode} />
-            <span className="text-xl font-semibold text-gray-600">
+            <span className="text-sm sm:text-base md:text-xl font-semibold text-gray-600">
               Veg mode
             </span>
           </div>
