@@ -1,35 +1,46 @@
 import ImageWithLoading from "./ImageWithLoading";
-type MenuItemProps = {
+type MenuItemData = {
   img: string;
   name: string;
   desc: string;
   isSpicy: boolean;
+  price: number;
 };
-const MenuItem = ({ img, name, desc, isSpicy }: MenuItemProps) => {
+
+type MenuItemProps = {
+  item: MenuItemData;
+};
+
+const MenuItem = ({ item }: MenuItemProps) => {
   return (
-    <div className="w-full flex items-center gap-3 md:gap-4">
-      <div className="p-1 relative h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24 border roundedshadow-md">
-        <ImageWithLoading alt={name} src={img} />
+    <div className="w-full flex items-center gap-3 md:gap-4 group">
+      <div className="p-2 relative h-20 w-20 sm:h-24 sm:w-24 md:h-25 md:w-30 rounded-4xl roundedshadow-md overflow-hidden">
+        <div className="absolute inset-0 transition-transform duration-300 ease-out group-hover:scale-[1.05]">
+          <ImageWithLoading alt={item.name} src={item.img} className="p-2 bg-red-100" />
+        </div>
       </div>
       <div className="flex flex-col flex-1">
         <label
-          className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-1"
+          className="text-base md:text-lg font-semibold flex items-center gap-1"
           htmlFor="item"
         >
-          {name}
-          {isSpicy && (
+          {item.name}
+          {item.isSpicy && (
             <div className="p-1 relative h-5 w-5">
               <ImageWithLoading alt="spicy" src="/icons/spicy.svg" />
             </div>
           )}
         </label>
         <span
-          className="text-xs sm:text-sm md:text-base text-gray-600"
+          className="text-sm md:text-base text-gray-600"
           id="item"
         >
-          {desc}
+          {item.desc}
         </span>
       </div>
+      <span className="text-xl md:text-2xl font-semibold text-gray-700">
+        ₹{item.price}
+      </span>
     </div>
   );
 };

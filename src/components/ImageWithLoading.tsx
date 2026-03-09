@@ -6,9 +6,14 @@ import { useState } from "react";
 interface ImageWithLoadingProps {
   src: string;
   alt: string;
+  className?: string;
 }
 
-export default function ImageWithLoading({ src, alt }: ImageWithLoadingProps) {
+export default function ImageWithLoading({
+  src,
+  alt,
+  className = "",
+}: ImageWithLoadingProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
@@ -22,7 +27,7 @@ export default function ImageWithLoading({ src, alt }: ImageWithLoadingProps) {
         </div>
       )}
       <Image
-        className="object-contain"
+        className={`transition-transform ease-in-out duration-300 object-contain ${className}`}
         src={src}
         alt={alt}
         fill={true}

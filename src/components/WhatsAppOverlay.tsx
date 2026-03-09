@@ -2,7 +2,7 @@ import ImageWithLoading from "./ImageWithLoading";
 
 const WhatsAppOverlay = () => {
   const phone = "9535283905";
-  const message = "Hello! I want to order a cake";
+  const message = "Hello! I want to order a pizza";
 
   return (
     <div className="fixed bottom-[10dvh] right-[5dvw] z-2">
