@@ -4,20 +4,19 @@ import MenuItem from "../MenuItem";
 const pizzaItems = [
   {
     name: "Margherita",
-    desc: "Trapped with layer of cheese",
+    desc: "Topped with layer of cheese",
     img: "/categories/pizzas/pizza1.png",
     isVeg: true,
     isSpicy: false,
     price: 99
   },
   {
-    name: "Simple Veggie",
-    desc: "Onion & Capsuim",
+    name: "Veggie Feast",
+    desc: "Onion & Capsicum",
     img: "/categories/pizzas/pizza2.png",
     isVeg: true,
     isSpicy: false,
     price: 129
-
   },
   {
     name: "Meaty Feast & Seasoning",
@@ -26,7 +25,30 @@ const pizzaItems = [
     isVeg: false,
     isSpicy: true,
     price: 149
-
+  },
+  {
+    name: "Jugal Bandi",
+    desc: "Sweet Corn, Red Paprika, Paneer & Tomato",
+    img: "/categories/pizzas/pizza4.png",
+    isVeg: true,
+    isSpicy: false,
+    price: 139
+  },
+  {
+    name: "Indian Hot",
+    desc: "Onion, Capsicum, Jalapeno, Roasted Garlic",
+    img: "/categories/pizzas/pizza5.png",
+    isVeg: true,
+    isSpicy: true,
+    price: 119
+  },
+  {
+    name: "Super Combo",
+    desc: "Onion, Capsicum, Grilled Chicken, Chicken Tikka & Seasoning",
+    img: "/categories/pizzas/pizza6.png",
+    isVeg: false,
+    isSpicy: false,
+    price: 139
   },
 ];
 
