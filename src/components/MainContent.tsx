@@ -64,7 +64,7 @@ const MainContent = () => {
               Desserts
             </span>
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Beverages" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Beverages")}
             >
               Beverages
