@@ -20,6 +20,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Wow Pizza Menu | Rajajinagar",
   description: "Check out our menu on your device!",
+  themeColor: "#ffffff",
   keywords: [
     "Wow Pizza",
     "pizza menu",
