@@ -194,7 +194,7 @@ const Pizza = ({ classicItems, supremeItems }: PizzaProps) => {
         </span>
         {classicResults.map(
           (item) => (
-            <div className="px-4 pb-4" key={`${item.name}-${item.img}`}>
+            <div className="px-4 pb-4 flex" key={`${item.name}-${item.img}`}>
               <MenuItem item={item} />
             </div>
           ),
@@ -207,7 +207,7 @@ const Pizza = ({ classicItems, supremeItems }: PizzaProps) => {
         </span>
         {supremeResults.map(
           (item) => (
-            <div className="px-4 pb-4" key={`${item.name}-${item.img}`}>
+            <div className="px-4 pb-4 flex" key={`${item.name}-${item.img}`}>
               <MenuItem item={item} />
             </div>
           ),
