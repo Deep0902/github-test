@@ -1,4 +1,5 @@
 import ImageWithLoading from "./ImageWithLoading";
+import { memo } from "react";
 import { StaticImageData } from "next/image";
 
 type MenuItemData = {
@@ -61,4 +62,4 @@ const MenuItem = ({ item }: MenuItemProps) => {
   );
 };
 
-export default MenuItem;
+export default memo(MenuItem);

@@ -1,44 +1,50 @@
-import { useNonVegToggle } from "@/context/nonVegToggle";
+import { normalizeMenuItems, SearchableMenuItem } from "@/lib/menu";
 import MenuItem from "../MenuItem";
 
-const beverageItems = [
+export const beverageItems = normalizeMenuItems([
   {
-    name: "Coke/Fanta/Sprite",
+    name: "Water",
+    desc: "",
+    img: "/categories/beverages/Water.png",
+    isVeg: true,
+    isSpicy: false,
+  },
+  {
+    name: "Coke/Fanta/Sprite/Thumbs-Up",
     desc: "Chilled fizzy soft drink",
     img: "/categories/beverages/beverage1.png",
     isVeg: true,
     isSpicy: false,
   },
   {
-    name: "Milkshake",
-    desc: "Vanilla, Chocolate",
-    img: "/categories/beverages/beverage2.png",
-    isVeg: true,
-    isSpicy: false,
-    price: 69,
-  },
-  {
-    name: "Juice",
-    desc: "Fresh and naturally sweet fruit juice",
+    name: "Goli Soda",
+    desc: "Lime, Blue Berry, Paneer, Orange, Ginger",
     img: "/categories/beverages/beverage3.png",
     isVeg: true,
     isSpicy: false,
-    price: 49,
-  },
-];
+    price: 25,
+  }
+]);
 
-const Beverages = () => {
-  const { toggle } = useNonVegToggle();
+type BeveragesProps = {
+  items: SearchableMenuItem[];
+};
+
+const Beverages = ({ items }: BeveragesProps) => {
+  const results = items;
+  const hasResults = results.length > 0;
+
+  if (!hasResults) return null;
+
   return (
     <div className="flex flex-col gap-4 bg-[#fff6f6]">
       <span className="text-3xl font-semibold bg-[#ed5a5a] text-white px-5 py-3 rounded-t-md">Beverages</span>
-      {beverageItems.map(
-        (item) =>
-          (toggle || item.isVeg) && (
-            <div className="px-4 pb-4" key={item.img}>
-              <MenuItem item={item} />
-            </div>
-          ),
+      {results.map(
+        (item) => (
+          <div className="px-4 pb-4" key={`${item.name}-${item.img}`}>
+            <MenuItem item={item} />
+          </div>
+        ),
       )}
     </div>
   );

@@ -31,8 +31,8 @@ export default function ImageWithLoading({
       )}
       <Image
         className={`transition-transform ease-in-out duration-300 object-contain ${className}`}
-        src={src}
-        // src={`.${src}`}
+        // src={src}
+        src={`.${src}`}
         alt={alt}
         fill={true}
         loading="lazy"

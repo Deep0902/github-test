@@ -1,20 +1,52 @@
 "use client";
 import { Switch } from "@/components/ui/switch";
 import { useNonVegToggle } from "@/context/nonVegToggle";
-import { useEffect, useState } from "react";
-import AddOns from "./Categories/AddOns";
-import Desserts from "./Categories/Desserts";
-import Pizza from "./Categories/Pizza";
+import { filterMenuItems } from "@/lib/menu";
+import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import AddOns, { addOnItems } from "./Categories/AddOns";
+import Beverages, { beverageItems } from "./Categories/Beverages";
+import Desserts, { desserItems } from "./Categories/Desserts";
+import MealBox, { mealBoxItems } from "./Categories/MealBox";
+import Pizza, { pizzaClassic, pizzaSupreme } from "./Categories/Pizza";
+import Starters, { starterItems } from "./Categories/Starters";
 import ScrollFadeObserver from "./ScrollFadeObserver";
-import Starters from "./Categories/Starters";
-import Beverages from "./Categories/Beverages";
 
 const MainContent = () => {
   const [activeSection, setActiveSection] = useState("Pizzas");
+  const [searchQuery, setSearchQuery] = useState("");
   const { toggle, toggleMode } = useNonVegToggle();
+  const deferredSearchQuery = useDeferredValue(searchQuery);
+
+  const filteredItems = useMemo(
+    () => ({
+      pizzaClassic: filterMenuItems(pizzaClassic, deferredSearchQuery, toggle),
+      pizzaSupreme: filterMenuItems(pizzaSupreme, deferredSearchQuery, toggle),
+      starters: filterMenuItems(starterItems, deferredSearchQuery, toggle),
+      desserts: filterMenuItems(desserItems, deferredSearchQuery, toggle),
+      beverages: filterMenuItems(beverageItems, deferredSearchQuery, toggle),
+      addOns: filterMenuItems(addOnItems, deferredSearchQuery, toggle),
+      mealBox: filterMenuItems(mealBoxItems, deferredSearchQuery, toggle),
+    }),
+    [deferredSearchQuery, toggle],
+  );
+
+  const hasResults = useMemo(
+    () => Object.values(filteredItems).some((items) => items.length > 0),
+    [filteredItems],
+  );
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    // Increase/decrease this value to control how far below the sticky nav sections land.
+    const topOffset = 120;
+    const elementTop = element.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: elementTop - topOffset,
+      behavior: "smooth",
+    });
   };
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -29,7 +61,7 @@ const MainContent = () => {
       },
       {
         rootMargin: "-100px 0px -70% 0px",
-        threshold: 0.1,
+        threshold: 0,
       },
     );
 
@@ -42,8 +74,8 @@ const MainContent = () => {
 
   return (
     <>
-      <div className="px-[min(5vw,20px)] my-2">
-        <nav className="flex items-center gap-2 sm:gap-4 md:gap-8 sticky top-0 z-2 bg-white/30 backdrop-blur-lg">
+      <div className="px-4">
+        <nav className="flex flex-col items-cente gap-1 sticky top-0 z-2 bg-white py-2">
           <div className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto whitespace-nowrap py-2 min-w-0">
             <span
               className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Pizzas" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
@@ -75,47 +107,82 @@ const MainContent = () => {
             >
               Add Ons
             </span>
-          </div>
-          <div className="flex items-center justify-start gap-2 h-full shrink-0 cursor-pointer" onClick={toggleMode}>
-            <Switch
-              checked={toggle}
-              className="cursor-pointer"
-            />
-            <span className="text-sm sm:text-base md:text-xl font-semibold text-gray-600">
-              Veg mode
+            <span
+              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Meal-Box" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              onClick={() => scrollToSection("Meal-Box")}
+            >
+              Meal Box
             </span>
           </div>
+          <div className="flex items-center justify-start gap-2 w-full cursor-pointer self-end">
+            <div className="flex items-center justify-between gap-4 w-full">
+              <input
+                type="text"
+                className="flex-1 px-4 py-2 rounded-lg bg-[#fff6f6] border-2 border-transparent outline-none text-gray-800 placeholder-gray-400 transition-all focus:border-[#ed5a5a] focus:shadow-md"
+                placeholder="Find your meal 😋..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+              />
+            </div>
+            <div className="flex items-center gap-1" onClick={toggleMode}>
+              <Switch checked={toggle} className="cursor-pointer" />
+              <span className="text-sm sm:text-base md:text-xl font-semibold text-gray-600 whitespace-nowrap">
+                Veg mode
+              </span>
+            </div>
+          </div>
         </nav>
-        <main className="flex flex-col gap-6 py-4">
+        {!hasResults && searchQuery !== "" && (
+          <div className="flex justify-center items-center py-20">
+            <div className="text-center">
+              <p className="text-xl text-gray-500 font-semibold">
+                Oh no! Your meal isn't there 😟
+              </p>
+            </div>
+          </div>
+        )}
+        <main
+          className="flex flex-col gap-6 py-4"
+          style={{ display: hasResults ? "flex" : "none" }}
+        >
           <section
             className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
             id="Pizzas"
           >
-            <Pizza />
+            <Pizza
+              classicItems={filteredItems.pizzaClassic}
+              supremeItems={filteredItems.pizzaSupreme}
+            />
           </section>
           <section
             className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
             id="Starters"
           >
-            <Starters />
+            <Starters items={filteredItems.starters} />
           </section>
           <section
             className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
             id="Desserts"
           >
-            <Desserts />
+            <Desserts items={filteredItems.desserts} />
           </section>
           <section
             className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
             id="Beverages"
           >
-            <Beverages />
+            <Beverages items={filteredItems.beverages} />
           </section>
           <section
             className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
             id="Add-Ons"
           >
-            <AddOns />
+            <AddOns items={filteredItems.addOns} />
+          </section>
+          <section
+            className="w-full scroll-mt-15 rounded-4xl overflow-hidden"
+            id="Meal-Box"
+          >
+            <MealBox items={filteredItems.mealBox} />
           </section>
         </main>
       </div>
