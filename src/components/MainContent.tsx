@@ -74,9 +74,9 @@ const MainContent = () => {
 
   return (
     <>
-      <div className="px-4">
-        <nav className="flex flex-col items-cente gap-1 sticky top-0 z-2 bg-white py-2">
-          <div className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto whitespace-nowrap py-2 min-w-0">
+      <div className="px-4 flex flex-col justify-center">
+        <nav className="flex flex-col items-cente gap-1 sticky top-0 z-2 bg-white py-2 ">
+          <div className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 py-2 overflow-x-auto">
             <span
               className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Pizzas" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Pizzas")}
@@ -118,7 +118,7 @@ const MainContent = () => {
             <div className="flex items-center justify-between gap-4 w-full">
               <input
                 type="text"
-                className="flex-1 px-4 py-2 rounded-lg bg-[#fff6f6] border-2 border-transparent outline-none text-gray-800 placeholder-gray-400 transition-all focus:border-[#ed5a5a] focus:shadow-md"
+                className="flex-1 px-4 py-2 rounded-lg bg-[#fff6f6] border-2 border-transparent outline-none text-gray-800 placeholder-gray-400 transition-all focus:border-[#ed5a5a] focus:shadow-md text-base"
                 placeholder="Find your meal 😋..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
@@ -136,7 +136,7 @@ const MainContent = () => {
           <div className="flex justify-center items-center py-20">
             <div className="text-center">
               <p className="text-xl text-gray-500 font-semibold">
-                Oh no! Your meal isn't there 😟
+                Oh no! Your meal isn't here 😟
               </p>
             </div>
           </div>
