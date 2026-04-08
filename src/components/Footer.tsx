@@ -34,6 +34,15 @@ export default function Footer() {
               />
             </div>
           </a>
+          <a href={`https://www.swiggy.com/menu/1252657?source=sharing`}>
+            <div className="p-1 relative w-9 h-9 md:w-10 md:h-10 border border-[#ed5a5a] rounded bg-[#ed5a5a] shadow-md md:transition-all md:duration-400 md:hover:bg-[#ed5a5a] md:hover:scale-110">
+              <ImageWithLoading
+                alt={`Call`}
+                src={`/icons/swiggy.jpeg`}
+                className="p-2"
+              />
+            </div>
+          </a>
         </div>
       </div>
       <p className="bg-[#ed5a5a] text-white m-0 text-center py-2 w-full">
