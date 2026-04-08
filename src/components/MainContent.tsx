@@ -2,7 +2,7 @@
 import { Switch } from "@/components/ui/switch";
 import { useNonVegToggle } from "@/context/nonVegToggle";
 import { filterMenuItems } from "@/lib/menu";
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import AddOns, { addOnItems } from "./Categories/AddOns";
 import Beverages, { beverageItems } from "./Categories/Beverages";
 import Desserts, { desserItems } from "./Categories/Desserts";
@@ -16,6 +16,8 @@ const MainContent = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { toggle, toggleMode } = useNonVegToggle();
   const deferredSearchQuery = useDeferredValue(searchQuery);
+  const navRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<HTMLSpanElement>(null);
 
   const filteredItems = useMemo(
     () => ({
@@ -71,45 +73,68 @@ const MainContent = () => {
       sections.forEach((section) => observer.unobserve(section));
     };
   }, []);
+  useEffect(() => {
+  if (activeRef.current && navRef.current) {
+    activeRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }
+}, [activeSection]);
 
   return (
     <>
       <div className="px-4 flex flex-col justify-center">
         <nav className="flex flex-col items-cente gap-1 sticky top-0 z-2 bg-white py-2 ">
-          <div className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 py-2 overflow-x-auto">
+          <div ref={navRef} className="flex-1 flex items-center gap-4 sm:gap-6 md:gap-8 py-2 overflow-x-auto ">
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Pizzas" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base font-semibold sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Pizzas" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Pizzas")}
+              ref={activeSection === "Pizzas" ? activeRef : null}
             >
               Pizzas
             </span>
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Starters" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base font-semibold sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Starters" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Starters")}
+              ref={activeSection === "Starters" ? activeRef : null}
             >
               Starters
             </span>
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Desserts" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base font-semibold sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Desserts" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Desserts")}
+              ref={activeSection === "Desserts" ? activeRef : null}
+
+              
             >
               Desserts
             </span>
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Beverages" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base font-semibold sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Beverages" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Beverages")}
+              ref={activeSection === "Beverages" ? activeRef : null}
+
+              
             >
               Beverages
             </span>
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base font-semibold sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Add-Ons" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Add-Ons")}
+              ref={activeSection === "Add-Ons" ? activeRef : null}
+
             >
+              
               Add Ons
             </span>
             <span
-              className={`cursor-pointer text-base sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Meal-Box" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
+              className={`cursor-pointer text-base font-semibold sm:text-lg md:text-xl transition-all pb-2 shrink-0 ${activeSection === "Meal-Box" ? "text-gray-800 font-bold border-b-2 border-gray-600" : "border-b-2 border-transparent font-normal"}`}
               onClick={() => scrollToSection("Meal-Box")}
+              ref={activeSection === "Meal-Box" ? activeRef : null}
+
+              
             >
               Meal Box
             </span>

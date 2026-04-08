@@ -17,7 +17,7 @@ type MenuItemProps = {
 
 const MenuItem = ({ item }: MenuItemProps) => {
   return (
-    <div className="w-[inherit] flex items-center gap-3 md:gap-4 group">
+    <div className="w-80 flex-1 flex items-center gap-3 md:gap-4 group">
       <div className="p-2 relative h-20 w-20 sm:h-24 sm:w-24 md:h-24 md:w-24 rounded-2xl shadow-md overflow-hidden shrink-0">
         <div className="absolute inset-0">
           <ImageWithLoading
@@ -46,7 +46,7 @@ const MenuItem = ({ item }: MenuItemProps) => {
           {item.desc}
         </span>
       </div>
-      <span className="text-xl md:text-2xl font-semibold text-gray-700 shrink-0">
+      <span className="text-xl md:text-2xl font-bold text-gray-700 shrink-0">
         {item.price ? `₹${item.price}` : `MRP`}
       </span>
     </div>

@@ -45,7 +45,7 @@ const Desserts = ({ items }: DessertsProps) => {
       </span>
       {results.map(
         (item) => (
-          <div className="px-4 pb-4" key={`${item.name}-${item.img}`}>
+          <div className="px-4 pb-4 flex" key={`${item.name}-${item.img}`}>
             <MenuItem item={item} />
           </div>
         ),
