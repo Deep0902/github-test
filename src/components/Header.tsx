@@ -6,7 +6,7 @@ export default function Header() {
     <div className="">
       <Link
         href="/"
-        className="w-full h-35 relative flex  bg-[#db5b5b] left-0"
+        className="w-full h-30 relative flex  bg-[#db5b5b] overflow-hidden"
         aria-label="Home"
       >
         <ImageWithLoading src={`/pizza4.png`} alt="Bakery header" />

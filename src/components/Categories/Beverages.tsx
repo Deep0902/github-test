@@ -41,7 +41,7 @@ const Beverages = ({ items }: BeveragesProps) => {
       <span className="text-3xl font-semibold bg-[#ed5a5a] text-white px-5 py-3 rounded-t-md">Beverages</span>
       {results.map(
         (item) => (
-          <div className="px-4 pb-4" key={`${item.name}-${item.img}`}>
+          <div className="px-4 pb-4 flex" key={`${item.name}-${item.img}`}>
             <MenuItem item={item} />
           </div>
         ),

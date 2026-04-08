@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wow Pizza Menu 🍕
+
+A fast, friendly digital menu where customers can explore food items before placing an order.
+
+This project is built to make browsing easy on mobile and desktop. Users can jump between categories, search for dishes instantly, and quickly decide what to order without any clutter.
+
+## Why This Project Exists
+
+Restaurant menus should be simple, visual, and quick to scan.
+
+The goal of this app is to help customers:
+- Browse the full menu comfortably
+- Discover items quickly
+- Filter options based on preference
+- Decide before they place an order
+
+## What Users Can Do
+
+- Browse items by category (Pizzas, Starters, Desserts, Beverages, Add Ons, Meal Box)
+- Search menu items in real time
+- Toggle Veg Mode to see vegetarian items only
+- Smoothly scroll through sections with clear active navigation
+- View item images, prices, and descriptions in a clean layout
+
+## Feature Highlights
+
+- Category-first menu browsing for faster discovery
+- Sticky section navigation for quick jumps
+- Real-time search for instant filtering
+- Veg-only filter mode
+- Responsive UI optimized for phones and tablets
+- Soft loading and scroll animations for a polished feel
+
+## Tech Stack
+
+- Next.js (App Router)
+- React + TypeScript
+- Tailwind CSS
+- Radix UI / shadcn components
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Purpose in One Line
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Browse first, choose confidently, then place your order.
 
-## Learn More
+## Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+- WhatsApp quick-order action from selected items
+- Better item tags (spicy, bestseller, chef special)
+- Optional category banners and promotions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Note
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This app focuses on menu exploration and pre-order decision making.
+Ordering and payment workflows are intentionally out of scope for now.
